@@ -30,30 +30,16 @@ class Solution:
         # return: List[List[int]]
         
         # TODO: Write code below to return a nested list with the solution to the prompt
+        final = []
 
-        # new_matrix = []
-        # for i in range(len(matrix[0]), 0, -1):
-        #     new_matrix.append(list(map(lambda x: x[i-1], matrix)))
-
-        row0 = 0
-        col0 = 0
-        row1 = len(matrix) - 1
-        col1 = len(matrix) - 1
-        while (row0 < row1 and col0 < col1):
-            for i in range(col1 - col0):
-                temp = matrix[row0][col0 + i]
-                matrix[row0][col0 + i] = matrix[row1-i][col0]
-                matrix[row1-i][col0] = matrix[row1][col1-i]
-                matrix[row1][col1 + i] = matrix[row0+i][col1]
-                matrix[row0+i][col1] = temp
-            row0 += 1
-            col0 += 1
-            row1 -= 1
-            col1 -= 1
-
-        return matrix
-
-    pass
+        for i in range(len(matrix)):
+            temp = []
+            for j in range(len(matrix) - 1, -1, -1):
+                temp.append(matrix[j][i])
+            
+            final.append(temp)
+        
+        return final
 
 def main():
     array1 = input().split(" ")
